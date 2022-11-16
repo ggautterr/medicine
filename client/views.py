@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 from django.views.generic import TemplateView
+from .models import Book
 
 
 class ClientView(TemplateView):
@@ -9,5 +10,5 @@ class ClientView(TemplateView):
 
     def get_context_data(self, **kwargs):
         resp = super(ClientView, self).get_context_data(**kwargs)
-        resp['bla'] = 'bla_bla'
+        resp['books'] = Book.objects.all()
         return resp

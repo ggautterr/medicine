@@ -27,6 +27,10 @@ SECRET_KEY = 'django-insecure-r&=kh@0%57n2085v-e3vxk4%3fs=%@v7-4fiw8fid@n*xub#mx
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+SECURE_SSL_REDIRECT = False
+if os.getenv('DEBUG') == "False":
+    DEBUG = False
+    SECURE_SSL_REDIRECT = True
 
 ALLOWED_HOSTS = ['*']
 REST_FRAMEWORK = {
@@ -36,6 +40,7 @@ REST_FRAMEWORK = {
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,15 +48,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'active_link',
     'cabinet',
     'client',
 
 ]
+# MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+gettext = lambda s: s
+LANGUAGES = (
+    ('en', gettext('English')),
+    ('ru', gettext('Русский')),
+    ('uz', gettext('O\'zbekcha')),
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -122,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -131,6 +145,11 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

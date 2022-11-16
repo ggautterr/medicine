@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
 
 from django.urls import path, include
+from django.conf.urls.i18n import i18n_patterns
 
 from main import settings
 
@@ -26,12 +27,17 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
 
+    # django admin
+    path('admin/', admin.site.urls),
+    path('i18n/', include('django.conf.urls.i18n')),
+
+]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += i18n_patterns(
     # Apps
     path('', include('client.urls')),
     path('cabinet/', include('cabinet.urls')),
 
-    # django admin
-    path('admin/', admin.site.urls),
-]
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+)

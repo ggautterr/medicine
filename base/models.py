@@ -2,7 +2,6 @@ from django.utils import timezone
 
 import uuid as uuid
 from django.db import models
-from simple_history.models import HistoricalRecords
 
 
 class BaseModelManager(models.Manager):
@@ -33,7 +32,6 @@ class Base(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
     restored_at = models.DateTimeField(null=True, blank=True)
-    history = HistoricalRecords(inherit=True)  # simple history library
 
     is_delete = models.BooleanField(default=False)
 

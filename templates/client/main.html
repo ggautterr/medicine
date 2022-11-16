@@ -1,4 +1,17 @@
 {% extends 'base_client.html' %}
+{% load i18n %}
 
 {% block main %}
+    {% for book in books %}
+        <tr>
+            <img src="{{ book.image.url }}" alt="Girl in a jacket" width="500" height="600">
+        </tr>
+        <div class="top-item__info">
+            <span><strong>{% trans 'category' %}:</strong> </span> {{ book.category }}<br>
+            <span><strong>{% trans 'name' %}:</strong></span>  {{ book.name }}<br>
+            <span><strong>{% trans 'description' %}:</strong></span> {{ book.description }}<br>
+            <span><strong>{% trans 'author' %}:</strong></span> {{ book.author }}<br>
+            <span><strong>{% trans 'year' %}:</strong></span> {{ book.since }}<br>
+        </div>
+    {% endfor %}
 {% endblock %}
