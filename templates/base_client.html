@@ -7,130 +7,170 @@
     <title>{% block title %}{% endblock title %}</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width">
-    {#    <link rel="icon" href="{% static '/images/logos/logo.ico' %}"/>#}
-    <link href="{% static '/css/plugins/plugins.bundle.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static '/css/plugins/datatables.bundle.css' %}?v={{ TEMPLATE_STATIC_VERSION }}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{% static '/js/plugins/fancybox/jquery.fancybox.min.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static '/js/plugins/calendar/fullcalendar.bundle.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static '/js/plugins/filepond/filepond.css' %}" rel="stylesheet">
-    <link href="{% static '/js/plugins/cropper/cropper.min.css' %}" rel="stylesheet">
-    <link href="{% static '/js/plugins/datatable-export/buttons.dataTables.min.css' %}" rel="stylesheet">
-    <link href="{% static '/js/plugins/mention/tribute.css' %}" rel="stylesheet">
+{#    <link rel="icon" href="{% static '/images/logos/logo.ico' %}"/>#}
+    <link href="{% static '/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static '/css/main-style.css' %}" rel="stylesheet">
+{#    <link href="{% static '/css/plugins/plugins.bundle.css' %}" rel="stylesheet" type="text/css"/>#}
+{#    <link href="{% static '/css/plugins/datatables.bundle.css' %}?v={{ TEMPLATE_STATIC_VERSION }}" rel="stylesheet"#}
+{#          type="text/css"/>#}
+{#    <link href="{% static '/js/plugins/fancybox/jquery.fancybox.min.css' %}" rel="stylesheet" type="text/css"/>#}
+{#    <link href="{% static '/js/plugins/calendar/fullcalendar.bundle.css' %}" rel="stylesheet" type="text/css"/>#}
+{#    <link href="{% static '/js/plugins/filepond/filepond.css' %}" rel="stylesheet">#}
+{#    <link href="{% static '/js/plugins/cropper/cropper.min.css' %}" rel="stylesheet">#}
+{#    <link href="{% static '/js/plugins/datatable-export/buttons.dataTables.min.css' %}" rel="stylesheet">#}
+{#    <link href="{% static '/js/plugins/mention/tribute.css' %}" rel="stylesheet">#}
 
-    <link href="{% static '/css/style.bundle.css' %}?v={{ TEMPLATE_STATIC_VERSION }}" rel="stylesheet" type="text/css"/>
+{#    <link href="{% static '/css/style.bundle.css' %}?v={{ TEMPLATE_STATIC_VERSION }}" rel="stylesheet" type="text/css"/>#}
 
-    <script src="{% static '/js/plugins/jquery.js' %}"></script>
-    <script src="{% static '/js/plugins/plugins.bundle.js' %}"></script>
-    <script src="{% static '/js/plugins/scripts.bundle.js' %}"></script>
-    <script src="{% static '/js/plugins/formrepeater/formrepeater.bundle.js' %}"></script>
-    <script src="{% static '/js/plugins/formrepeater/formrepeater_local_ru.js' %}"></script>
-    <script src="{% static '/js/plugins/moment/moment.min.js' %}"></script>
-    <script src="{% static '/js/plugins/mask/input.mask.js' %}"></script>
-    <script src="{% static '/js/plugins/fancybox/jquery.fancybox.min.js' %}"></script>
-    <script src="{% static '/js/plugins/calendar/fullcalendar.bundle.js' %}"></script>
-    <script src="{% static '/js/plugins/filepond/filepond-plugin-file-validate-type.js' %}"></script>
-    <script src="{% static '/js/plugins/filepond/filepond.js' %}"></script>
-    <script src="{% static '/js/plugins/cropper/cropper.min.js' %}"></script>
-    <script src="{% static '/js/plugins/mention/tribute.js' %}"></script>
+    <script src="{% static '/js/bootstrap.bundle.js' %}"></script>
+{#    <script src="{% static '/js/plugins/jquery.js' %}"></script>#}
+{#    <script src="{% static '/js/plugins/plugins.bundle.js' %}"></script>#}
+{#    <script src="{% static '/js/plugins/scripts.bundle.js' %}"></script>#}
+{#    <script src="{% static '/js/plugins/formrepeater/formrepeater.bundle.js' %}"></script>#}
+{#    <script src="{% static '/js/plugins/formrepeater/formrepeater_local_ru.js' %}"></script>#}
+{#    <script src="{% static '/js/plugins/moment/moment.min.js' %}"></script>#}
+{#    <script src="{% static '/js/plugins/mask/input.mask.js' %}"></script>#}
+{#    <script src="{% static '/js/plugins/fancybox/jquery.fancybox.min.js' %}"></script>#}
+{#    <script src="{% static '/js/plugins/calendar/fullcalendar.bundle.js' %}"></script>#}
+{#    <script src="{% static '/js/plugins/filepond/filepond-plugin-file-validate-type.js' %}"></script>#}
+{#    <script src="{% static '/js/plugins/filepond/filepond.js' %}"></script>#}
+{#    <script src="{% static '/js/plugins/cropper/cropper.min.js' %}"></script>#}
+{#    <script src="{% static '/js/plugins/mention/tribute.js' %}"></script>#}
 </head>
 
 <body id="kt_body" class="header-extended header-fixed header-tablet-and-mobile-fixed">
-<form id="langForm" action="{% url 'set_language' %}" method="post" style="display: none">
-    {% csrf_token %}
-    <input id="next" name="next" type="hidden" value="{{ redirect_to }}">
-    <input id="language" name="language" type="text" type="hidden" value="">
-</form>
 
-<div class="d-flex flex-column flex-root">
-    <div class="page d-flex flex-row flex-column-fluid">
-        <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
-            <div id="kt_header" class="header">
-                <div class="header-top d-flex align-items-stretch flex-grow-1">
-                    <div class="d-flex container-xxl w-100">
-                        <div class="d-flex flex-stack align-items-stretch w-100">
-                            <div class="d-flex align-items-center align-items-lg-stretch me-5">
-                                <button class="d-lg-none btn btn-icon btn-color-white bg-hover-white bg-hover-opacity-10 w-35px h-35px h-md-40px w-md-40px ms-n2 me-2"
-                                        id="kt_header_navs_toggle">
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                             viewBox="0 0 24 24" fill="none">
-                                            <path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z"
-                                                  fill="black"/>
-                                            <path opacity="0.3"
-                                                  d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z"
-                                                  fill="black"/>
-                                        </svg>
-                                    </span>
-                                </button>
-                                <div class="header-right">
-                                    <div class="header-lang">
+    <form id="langForm" action="{% url 'set_language' %}" method="post" style="display: none">
+        {% csrf_token %}
+        <input id="next" name="next" type="hidden" value="{{ redirect_to }}">
+        <input id="language" name="language" type="text" type="hidden" value="">
+    </form>
 
-                                        <div class="dropdown">
-                                            <button class="btn btn-secondary dropdown-toggle" id="dropdownLang"
-                                                    data-toggle="dropdown">
-                                                {% get_current_language as LANGUAGE_CODE %}
-                                                {{ LANGUAGE_CODE }}
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownLang">
-                                                {% get_available_languages as LANGUAGES %}
-                                                {% get_language_info_list for LANGUAGES as languages %}
-                                                {% for language in languages %}
-                                                    {% if language.code == LANGUAGE_CODE %}
-
-                                                    {% else %}
-                                                        <a class="dropdown-item changeLang"
-                                                           data-lang="{{ language.code }}"
-                                                           href="#">{{ language.code }}</a>
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <form action="{% url 'set_language' %}" method="post">
-                                    {% csrf_token %}
-                                    <input name="next" type="hidden" value="{{ redirect_to }}"/>
-                                    <select name="language">
-                                        {% get_language_info_list for LANGUAGES as languages %}
-                                        {% for language in languages %}
-                                            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
-                                                    selected="selected"{% endif %}>
-                                                {{ language.name_local }} ({{ language.code }})
-                                            </option>
-                                        {% endfor %}
-                                    </select>
-                                    <input type="submit" value="Go"/>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {% block main %}
-            {% endblock %}
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand">Alpha</a>
+            <form class="d-flex">
+                <select class="form-select me-3" aria-label="Default select example">
+                  <option value="1">ru</option>
+                  <option value="2">uz</option>
+                  <option value="3">eng</option>
+                </select>
+                <button class="btn btn-outline-success" type="submit">Go</button>
+            </form>
+{#            <form action="{% url 'set_language' %}" method="post">#}
+{#                {% csrf_token %}#}
+{#                <input name="next" type="hidden" value="{{ redirect_to }}"/>#}
+{#                <select name="language">#}
+{#                    {% get_language_info_list for LANGUAGES as languages %}#}
+{#                    {% for language in languages %}#}
+{#                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected" {% endif %}>#}
+{#                            {{ language.name_local }} ({{ language.code }})#}
+{#                        </option>#}
+{#                    {% endfor %}#}
+{#                </select>#}
+{#                <input type="submit" value="Go"/>#}
+{#            </form>#}
         </div>
-    </div>
+    </nav>
 
+    {% block main %}
+    {% endblock %}
 
-    <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
-        <span class="svg-icon">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-					<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)"
-                          fill="black"/>
-					<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
-                          fill="black"/>
-				</svg>
-			</span>
-    </div>
-</div>
+{#<form id="langForm" action="{% url 'set_language' %}" method="post" style="display: none">#}
+{#    {% csrf_token %}#}
+{#    <input id="next" name="next" type="hidden" value="{{ redirect_to }}">#}
+{#    <input id="language" name="language" type="text" type="hidden" value="">#}
+{#</form>#}
+{##}
+{#<div class="d-flex flex-column flex-root">#}
+{#    <div class="page d-flex flex-row flex-column-fluid">#}
+{#        <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">#}
+{#            <div id="kt_header" class="header">#}
+{#                <div class="header-top d-flex align-items-stretch flex-grow-1">#}
+{#                    <div class="d-flex container-xxl w-100">#}
+{#                        <div class="d-flex flex-stack align-items-stretch w-100">#}
+{#                            <div class="d-flex align-items-center align-items-lg-stretch me-5">#}
+{#                                <button class="d-lg-none btn btn-icon btn-color-white bg-hover-white bg-hover-opacity-10 w-35px h-35px h-md-40px w-md-40px ms-n2 me-2"#}
+{#                                        id="kt_header_navs_toggle">#}
+{#                                    <span class="svg-icon svg-icon-2">#}
+{#                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"#}
+{#                                             viewBox="0 0 24 24" fill="none">#}
+{#                                            <path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z"#}
+{#                                                  fill="black"/>#}
+{#                                            <path opacity="0.3"#}
+{#                                                  d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z"#}
+{#                                                  fill="black"/>#}
+{#                                        </svg>#}
+{#                                    </span>#}
+{#                                </button>#}
+{#                                <div class="header-right">#}
+{#                                    <div class="header-lang">#}
+{##}
+{#                                        <div class="dropdown">#}
+{#                                            <button class="btn btn-secondary dropdown-toggle" id="dropdownLang"#}
+{#                                                    data-toggle="dropdown">#}
+{#                                                {% get_current_language as LANGUAGE_CODE %}#}
+{#                                                {{ LANGUAGE_CODE }}#}
+{#                                            </button>#}
+{#                                            <div class="dropdown-menu" aria-labelledby="dropdownLang">#}
+{#                                                {% get_available_languages as LANGUAGES %}#}
+{#                                                {% get_language_info_list for LANGUAGES as languages %}#}
+{#                                                {% for language in languages %}#}
+{#                                                    {% if language.code == LANGUAGE_CODE %}#}
+{##}
+{#                                                    {% else %}#}
+{#                                                        <a class="dropdown-item changeLang"#}
+{#                                                           data-lang="{{ language.code }}"#}
+{#                                                           href="#">{{ language.code }}</a>#}
+{#                                                    {% endif %}#}
+{#                                                {% endfor %}#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <form action="{% url 'set_language' %}" method="post">#}
+{#                                    {% csrf_token %}#}
+{#                                    <input name="next" type="hidden" value="{{ redirect_to }}"/>#}
+{#                                    <select name="language">#}
+{#                                        {% get_language_info_list for LANGUAGES as languages %}#}
+{#                                        {% for language in languages %}#}
+{#                                            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}#}
+{#                                                    selected="selected"{% endif %}>#}
+{#                                                {{ language.name_local }} ({{ language.code }})#}
+{#                                            </option>#}
+{#                                        {% endfor %}#}
+{#                                    </select>#}
+{#                                    <input type="submit" value="Go"/>#}
+{#                                </form>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{##}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{#    <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">#}
+{#        <span class="svg-icon">#}
+{#				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">#}
+{#					<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)"#}
+{#                          fill="black"/>#}
+{#					<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"#}
+{#                          fill="black"/>#}
+{#				</svg>#}
+{#			</span>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#<div class="preloader">#}
+{#    <div class="loader"></div>#}
+{#</div>#}
+{##}
+{#{% block script %}#}
+{#{% endblock %}#}
 
-<div class="preloader">
-    <div class="loader"></div>
-</div>
-
-{% block script %}
-{% endblock %}
 </body>
 </html>

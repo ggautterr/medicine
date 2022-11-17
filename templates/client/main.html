@@ -3,15 +3,43 @@
 
 {% block main %}
     {% for book in books %}
-        <tr>
-            <img src="{{ book.image.url }}" alt="Girl in a jacket" width="500" height="600">
-        </tr>
-        <div class="top-item__info">
-            <span><strong>{% trans 'category' %}:</strong> </span> {{ book.category }}<br>
-            <span><strong>{% trans 'name' %}:</strong></span>  {{ book.name }}<br>
-            <span><strong>{% trans 'description' %}:</strong></span> {{ book.description }}<br>
-            <span><strong>{% trans 'author' %}:</strong></span> {{ book.author }}<br>
-            <span><strong>{% trans 'year' %}:</strong></span> {{ book.since }}<br>
+
+        <div class="main">
+            <div class="medicine-form container px-5">
+                <div class="box my-5 p-3">
+                    <div class="block-st mb-3 d-flex justify-content-around">
+                        <div class="img-m">
+                            <img src="../../static/images/male.png" width="30">
+                        </div>
+                        <div class="img-wm">
+                            <img src="../../static/images/female.png" width="30">
+                        </div>
+                    </div>
+                    <div class="block-nd d-flex justify-content-between">
+                        <div class="search-m">
+                            <div class="mb-3">
+                              <input type="text" class="form-control" placeholder="JSHSHR">
+                            </div>
+                        </div>
+                        <div class="search-wm">
+                            <div class="mb-3">
+                              <input type="text" class="form-control" placeholder="JSHSHR">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+{#        <tr>#}
+{#            <img src="{{ book.image.url }}" alt="Girl in a jacket" width="100%" height="100%">#}
+{#        </tr>#}
+{#        <div class="top-item__info">#}
+{#            <span><strong>{% trans 'category' %}:</strong> </span> {{ book.category }}<br>#}
+{#            <span><strong>{% trans 'name' %}:</strong></span>  {{ book.name }}<br>#}
+{#            <span><strong>{% trans 'description' %}:</strong></span> {{ book.description }}<br>#}
+{#            <span><strong>{% trans 'author' %}:</strong></span> {{ book.author }}<br>#}
+{#            <span><strong>{% trans 'year' %}:</strong></span> {{ book.since }}<br>#}
+{#        </div>#}
     {% endfor %}
 {% endblock %}
