@@ -36,6 +36,11 @@
 </head>
 
 <body id="kt_body" class="header-extended header-fixed header-tablet-and-mobile-fixed">
+<form id="langForm" action="{% url 'set_language' %}" method="post" style="display: none">
+    {% csrf_token %}
+    <input id="next" name="next" type="hidden" value="{{ redirect_to }}">
+    <input id="language" name="language" type="text" type="hidden" value="">
+</form>
 
 <div class="d-flex flex-column flex-root">
     <div class="page d-flex flex-row flex-column-fluid">
@@ -83,6 +88,20 @@
                                         </div>
                                     </div>
                                 </div>
+                                <form action="{% url 'set_language' %}" method="post">
+                                    {% csrf_token %}
+                                    <input name="next" type="hidden" value="{{ redirect_to }}"/>
+                                    <select name="language">
+                                        {% get_language_info_list for LANGUAGES as languages %}
+                                        {% for language in languages %}
+                                            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                                                    selected="selected"{% endif %}>
+                                                {{ language.name_local }} ({{ language.code }})
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                    <input type="submit" value="Go"/>
+                                </form>
                             </div>
                         </div>
                     </div>
