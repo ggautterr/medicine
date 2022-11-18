@@ -84,8 +84,11 @@
 
 .info .info-m span,
 .info .info-wm span {
-    display: block;
+    /*display: block;*/
     font-weight: 700;
     margin-bottom: 5px;
 }
 
+.info-wm .text {
+    display: flex;
+}

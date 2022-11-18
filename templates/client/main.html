@@ -28,22 +28,50 @@
                 </div>
                 <div class="info">
                     <div class="info-m">
-                        <span>Familiyasi: </span>
-                        <span>Ismi: </span>
-                        <span>Otasining ismi: </span>
-                        <span>Millati: </span>
-                        <span>Tug'ilgan sanasi: </span>
-                        <span>Tug'ilgan joyi: </span>
-                        <span>Genetik holati: </span>
+                        <div class="text">
+                            <span>Familiyasi: </span> Bozorov
+                        </div>
+                        <div class="text">
+                            <span>Ismi: </span> Sardor
+                        </div>
+                        <div class="text">
+                            <span>Otasining ismi: </span> Barat o'g'li
+                        </div>
+                        <div class="text">
+                            <span>Millati: </span> Uzbek
+                        </div>
+                        <div class="text">
+                            <span>Tug'ilgan sanasi: </span> 12.11.2001
+                        </div>
+                        <div class="text">
+                            <span>Tug'ilgan joyi: </span> Uzbekiston
+                        </div>
+                        <div class="text">
+                            <span>Genetik holati: </span> Sog'lom
+                        </div>
                     </div>
                     <div class="info-wm">
-                        <span>Familiyasi: </span>
-                        <span>Ismi: </span>
-                        <span>Otasining ismi: </span>
-                        <span>Millati: </span>
-                        <span>Tug'ilgan sanasi: </span>
-                        <span>Tug'ilgan joyi: </span>
-                        <span>Genetik holati: </span>
+                        <div class="text">
+                            <span>Familiyasi: </span> <div id="surname_name">Bozorov</div>
+                        </div>
+                        <div class="text">
+                            <span>Ismi: </span> <div id="given_name"></div>
+                        </div>
+                        <div class="text">
+                            <span>Otasining ismi: </span> <div id="father_name"></div>
+                        </div>
+                        <div class="text">
+                            <span>Millati: </span> <div id="nationality"></div>
+                        </div>
+                        <div class="text">
+                            <span>Tug'ilgan sanasi: </span> <div id="date_of_birth"></div>
+                        </div>
+                        <div class="text">
+                            <span>Tug'ilgan joyi: </span> <div id="place_of_birth"></div>
+                        </div>
+                        <div class="text">
+                            <span>Genetik holati: </span> <div id="genetics"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="block-btn d-flex justify-content-end mt-3">
@@ -54,6 +82,8 @@
         </div>
     </div>
     <script>
+        const surname_name = document.getElementById('surname_name');
+
         console.log("rgegr")
         const input_jshshir1 = document.getElementById('jshshir1');
 
@@ -61,6 +91,8 @@
         console.log(input_jshshir1)
 
         function updateValue(e) {
+            surname_name.innerHTML = "Axtamov";
+
             let jshshir1 = e.target.value
             let formData = new FormData();
             formData.append("jshshir1", jshshir1);
@@ -80,5 +112,9 @@
             });
 
         }
+
+
+
+
     </script>
 {% endblock %}
