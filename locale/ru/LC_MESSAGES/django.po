@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-16 10:28+0000\n"
+"POT-Creation-Date: 2022-11-18 21:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,41 +20,65 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: main/settings.py:59
+#: main/settings.py:57
 msgid "English"
-msgstr "Английский"
+msgstr ""
 
-#: main/settings.py:60
+#: main/settings.py:58
 msgid "Русский"
-msgstr "Русский"
+msgstr ""
 
-#: main/settings.py:61
+#: main/settings.py:59
 msgid "O'zbekcha"
-msgstr "узбекский"
+msgstr ""
 
-#: templates/client/main.html:10
-msgid "category"
-msgstr "категория"
+#: templates/client/main.html:37 templates/client/main.html:67
+msgid "Surname"
+msgstr "Фамилия"
 
-#: templates/client/main.html:11
-msgid "name"
-msgstr "имя"
+#: templates/client/main.html:41 templates/client/main.html:71
+msgid "Name"
+msgstr "Имя"
 
-#: templates/client/main.html:12
-msgid "description"
-msgstr "описание"
+#: templates/client/main.html:45
+msgid "Father's name"
+msgstr "Отчество"
 
-#: templates/client/main.html:13
-msgid "author"
-msgstr "автор"
+#: templates/client/main.html:49 templates/client/main.html:79
+msgid "Nationality"
+msgstr "Национальность"
 
-#: templates/client/main.html:14
-msgid "year"
-msgstr "год"
+#: templates/client/main.html:53 templates/client/main.html:83
+msgid "Date of birth"
+msgstr "Дата рождения"
+
+#: templates/client/main.html:57 templates/client/main.html:87
+msgid "Place of birth"
+msgstr "Место рождения"
+
+#: templates/client/main.html:61 templates/client/main.html:91
+msgid "Genetic status"
+msgstr "Генетический статус"
+
+#: templates/client/main.html:75
+msgid "Father's Name"
+msgstr "Отчество"
+
+#: templates/client/main.html:97
+msgid "Run"
+msgstr "Cтарт"
+
+#: templates/client/main.html:188 templates/client/main.html:259
+msgid "Healthy"
+msgstr "Здоровый"
+
+#: templates/client/main.html:190 templates/client/main.html:261
+msgid "Ill"
+msgstr "Больной"
 
 #: venv/lib/python3.10/site-packages/django/contrib/messages/apps.py:15
 msgid "Messages"
-msgstr "Сообщения"
+msgstr ""
 
 #: venv/lib/python3.10/site-packages/django/contrib/sitemaps/apps.py:8
 msgid "Site Maps"

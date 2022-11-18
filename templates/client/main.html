@@ -34,67 +34,67 @@
                 <div class="info">
                     <div class="info-m" id="info_m">
                         <div class="text">
-                            <span>Familiyasi: </span>
+                            <span>{% trans 'Surname' %}: </span>
                             <div id="surname_name1"></div>
                         </div>
                         <div class="text">
-                            <span>Ismi: </span>
+                            <span>{% trans 'Name' %}: </span>
                             <div id="given_name1"></div>
                         </div>
                         <div class="text">
-                            <span>Otasining ismi: </span>
+                            <span>{% trans "Father's name" %}: </span>
                             <div id="father_name1"></div>
                         </div>
                         <div class="text">
-                            <span>Millati: </span>
+                            <span>{% trans 'Nationality' %}: </span>
                             <div id="nationality1"></div>
                         </div>
                         <div class="text">
-                            <span>Tug'ilgan sanasi: </span>
+                            <span>{% trans 'Date of birth' %}: </span>
                             <div id="date_of_birth1"></div>
                         </div>
                         <div class="text">
-                            <span>Tug'ilgan joyi: </span>
+                            <span>{% trans 'Place of birth' %}: </span>
                             <div id="place_of_birth1"></div>
                         </div>
                         <div class="text">
-                            <span>Genetik holati: </span>
+                            <span>{% trans 'Genetic status' %}: </span>
                             <div id="genetics1"></div>
                         </div>
                     </div>
                     <div class="info-wm" id="info_wm">
                         <div class="text">
-                            <span>Familiyasi: </span>
+                            <span>{% trans 'Surname' %}: </span>
                             <div id="surname_name2"></div>
                         </div>
                         <div class="text">
-                            <span>Ismi: </span>
+                            <span>{% trans 'Name' %}: </span>
                             <div id="given_name2"></div>
                         </div>
                         <div class="text">
-                            <span>Otasining ismi: </span>
+                            <span>{% trans "Father's Name" %}: </span>
                             <div id="father_name2"></div>
                         </div>
                         <div class="text">
-                            <span>Millati: </span>
+                            <span>{% trans 'Nationality' %}: </span>
                             <div id="nationality2"></div>
                         </div>
                         <div class="text">
-                            <span>Tug'ilgan sanasi: </span>
+                            <span>{% trans 'Date of birth' %}: </span>
                             <div id="date_of_birth2"></div>
                         </div>
                         <div class="text">
-                            <span>Tug'ilgan joyi: </span>
+                            <span>{% trans 'Place of birth' %}: </span>
                             <div id="place_of_birth2"></div>
                         </div>
                         <div class="text">
-                            <span>Genetik holati: </span>
+                            <span>{% trans 'Genetic status' %}: </span>
                             <div id="genetics2"></div>
                         </div>
                     </div>
                 </div>
                 <div class="block-btn d-flex justify-content-end mt-3">
-                    <button type="submit" class="btn btn-primary">Start</button>
+                    <button type="submit" class="btn btn-primary">{% trans "Run" %}</button>
                 </div>
             </div>
             <div class="box-nd mb-5" id="id_box_nd">
@@ -109,7 +109,6 @@
     <script>
         function getAnalysis(data) {
             Highcharts.chart('container', {
-                {#colors: ['#01BAF2', '#71BF45', '#FAA74B', '#B37CD2'],#}
                 chart: {
                     type: 'pie'
                 },
@@ -156,11 +155,9 @@
         const genetics1 = document.getElementById('genetics1');
         const pic1 = document.getElementById('pic1');
 
-        {#console.log("rgegr")#}
         const input_jshshir1 = document.getElementById('jshshir1');
 
         input_jshshir1.addEventListener('change', updateValue1);
-        console.log(input_jshshir1)
 
         function updateValue1(e) {
 
@@ -178,15 +175,19 @@
                 method: 'POST',
                 data: formData,
                 success: function (data) {
-                    console.log(data)
                     jshshr1 = data.JSHSHIR;
                     surname_name1.innerHTML = data.surname_name;
                     given_name1.innerHTML = data.given_name;
                     father_name1.innerHTML = data.father_name;
-                    nationality1.innerHTML = data.nationality;
+                    nationality1.innerHTML = "Uzbek";
                     date_of_birth1.innerHTML = data.date_of_birth;
                     place_of_birth1.innerHTML = data.place_of_birth;
-                    genetics1.innerHTML = data.genetics;
+                    if (data.genetics) {
+                        genetics1.innerHTML = "{% trans 'Healthy' %}";
+                    } else {
+                        genetics1.innerHTML = "{% trans 'Ill' %}";
+                    }
+
                     if (data.gender == 1) {
                         gender1 = data.gender;
                         pic1.src = '../../static/images/male-gender.png'
@@ -202,7 +203,6 @@
 
                 },
                 error: function (data) {
-                    console.log(data.status)
                     if (data.status == 400) {
                         input_jshshir1.classList.remove('succ')
                         input_jshshir1.classList.add('err')
@@ -211,8 +211,6 @@
                     }
                 }
             });
-
-            {#test();#}
 
         }
 
@@ -226,11 +224,9 @@
         const genetics2 = document.getElementById('genetics2');
         const pic2 = document.getElementById('pic2');
 
-        {#console.log("rgegr")#}
         const input_jshshir2 = document.getElementById('jshshir2');
 
         input_jshshir2.addEventListener('change', updateValue2);
-        console.log(input_jshshir2)
 
         function updateValue2(e) {
 
@@ -248,15 +244,18 @@
                 method: 'POST',
                 data: formData,
                 success: function (data) {
-                    console.log(data)
                     jshshr2 = data.JSHSHIR;
                     surname_name2.innerHTML = data.surname_name;
                     given_name2.innerHTML = data.given_name;
                     father_name2.innerHTML = data.father_name;
-                    nationality2.innerHTML = data.nationality;
+                    nationality2.innerHTML = "Uzbek";
                     date_of_birth2.innerHTML = data.date_of_birth;
                     place_of_birth2.innerHTML = data.place_of_birth;
-                    genetics1.innerHTML = data.genetics;
+                    if (data.genetics) {
+                        genetics2.innerHTML = "{% trans 'Healthy' %}";
+                    } else {
+                        genetics2.innerHTML = "{% trans 'Ill' %}";
+                    }
                     if (data.gender == 1) {
                         gender2 = data.gender;
                         pic2.src = '../../static/images/male-gender.png'
@@ -272,7 +271,6 @@
 
                 },
                 error: function (data) {
-                    console.log(data.status)
                     if (data.status == 400) {
                         input_jshshir2.classList.remove('succ')
                         input_jshshir2.classList.add('err')
@@ -286,12 +284,8 @@
         }
 
         function test() {
-            console.log(gender1);
-            console.log(gender2);
 
             if (gender1 === gender2) {
-                console.log(gender1);
-                console.log(gender2);
 
                 input_jshshir1.classList.remove('succ')
                 input_jshshir1.classList.add('err')

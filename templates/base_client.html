@@ -75,7 +75,7 @@
 <script>
     $(".changeLang").click(function (event) {
         event.preventDefault();
-
+        console.log($(this).data('lang'))
         $("#language").val($(this).data('lang'));
         $("#langForm").submit();
     });
@@ -87,13 +87,11 @@
     dropdownLang.addEventListener("mousemove", lng_hover);
 
     function lng_hover() {
-        console.log(1)
         dropdown_lng.classList.add('show')
     }
 
     function lng_hover_m() {
         setTimeout(() => {
-          console.log("Delayed for 2 second.");
           dropdown_lng.classList.remove('show')
         }, "2000")
 
