@@ -23,7 +23,6 @@ from django.conf.urls.i18n import i18n_patterns
 from main import settings
 
 urlpatterns = [
-    # AUTH
 
     # django admin
     path('admin/', admin.site.urls),
@@ -36,6 +35,5 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += i18n_patterns(
     # Apps
     path('', include('client.urls')),
-    path('cabinet/', include('cabinet.urls')),
 
 )

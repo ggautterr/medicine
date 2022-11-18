@@ -43,6 +43,7 @@ class Person(Base):
     JSHSHIR = models.CharField(max_length=14, null=True, blank=True, unique=True)
     gender = models.ForeignKey(Gender, null=True, blank=True, on_delete=models.SET_NULL)
     genotype = models.ManyToManyField(Genotype, blank=True)
+    genetic_condition = models.ForeignKey(Genetics, blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.surname_name} {self.given_name}"

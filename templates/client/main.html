@@ -2,6 +2,9 @@
 {% load i18n %}
 
 {% block main %}
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <div class="bg"></div>
     <div class="main">
         <form class="medicine-form container px-5" id="asdf">
@@ -94,9 +97,47 @@
                     <button type="submit" class="btn btn-primary">Start</button>
                 </div>
             </div>
-            <div class="box-nd mb-5"></div>
+            <div class="box-nd mb-5">
+                <div id="container"></div>
+            </div>
         </form>
     </div>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script>
+        function getAnalysis(data) {
+            Highcharts.chart('container', {
+                {#colors: ['#01BAF2', '#71BF45', '#FAA74B', '#B37CD2'],#}
+                chart: {
+                    type: 'pie'
+                },
+                title: {
+                    text: 'Prognosis'
+                },
+                tooltip: {
+                    valueSuffix: '%'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.name}: {y} %'
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    name: 'Percentage',
+                    colorByPoint: true,
+                    innerSize: '55%',
+                    data: data
+                }]
+            });
+        }
+    </script>
     <script>
         const info_m = document.getElementById('info_m');
         const info_wm = document.getElementById('info_wm');
@@ -240,15 +281,13 @@
             });
 
 
-
-
         }
 
         function test() {
             console.log(gender1);
             console.log(gender2);
 
-            if(gender1 === gender2) {
+            if (gender1 === gender2) {
                 console.log(gender1);
                 console.log(gender2);
 
@@ -271,7 +310,7 @@
             formData.append("jshshir1", jshshr1);
             formData.append("jshshir2", jshshr2);
 
-            let url = "{% url '' %}";
+            let url = "{% url 'main:get_analysis' %}";
 
             $.ajax({
                 headers: {"X-CSRFToken": "{{csrf_token}}"},
@@ -281,10 +320,9 @@
                 method: 'POST',
                 data: formData,
                 success: function (data) {
-                    console.log(data)
+                    getAnalysis(data.analysis)
                 },
                 error: function (data) {
-                    console.log(data.status)
                 }
             })
         })
