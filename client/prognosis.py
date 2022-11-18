@@ -35,6 +35,7 @@ def analysis(JSHSHIR_1, JSHSHIR_2):
                 }
             )
 
+        print(q)
     genetic_all.append({
         "name": "Health",
         "y": health_percentage,
