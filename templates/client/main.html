@@ -4,7 +4,7 @@
 {% block main %}
     <div class="bg"></div>
     <div class="main">
-        <div class="medicine-form container px-5">
+        <form class="medicine-form container px-5">
             <div class="box my-5 p-4">
                 <div class="block-st mb-3 d-flex justify-content-around">
                     <div class="img-m">
@@ -17,85 +17,91 @@
                 <div class="block-nd d-flex justify-content-between">
                     <div class="search-m me-3">
                         <div class="mb-3">
-                            <input id="jshshir1" type="text" class="form-control" maxlength="14" placeholder="JSHSHR">
+                            <input id="jshshir1" type="text" class="form-control" maxlength="14" placeholder="JSHSHR" required>
                         </div>
                     </div>
                     <div class="search-wm">
                         <div class="mb-3">
-                            <input id="jshshir2" type="text" class="form-control" maxlength="14" placeholder="JSHSHR">
+                            <input id="jshshir2" type="text" class="form-control" maxlength="14" placeholder="JSHSHR" required>
                         </div>
                     </div>
                 </div>
                 <div class="info">
                     <div class="info-m">
                         <div class="text">
-                            <span>Familiyasi: </span> Bozorov
+                            <span>Familiyasi: </span> <div id="surname_name1"></div>
                         </div>
                         <div class="text">
-                            <span>Ismi: </span> Sardor
+                            <span>Ismi: </span> <div id="given_name1"></div>
                         </div>
                         <div class="text">
-                            <span>Otasining ismi: </span> Barat o'g'li
+                            <span>Otasining ismi: </span> <div id="father_name1"></div>
                         </div>
                         <div class="text">
-                            <span>Millati: </span> Uzbek
+                            <span>Millati: </span> <div id="nationality1"></div>
                         </div>
                         <div class="text">
-                            <span>Tug'ilgan sanasi: </span> 12.11.2001
+                            <span>Tug'ilgan sanasi: </span> <div id="date_of_birth1"></div>
                         </div>
                         <div class="text">
-                            <span>Tug'ilgan joyi: </span> Uzbekiston
+                            <span>Tug'ilgan joyi: </span> <div id="place_of_birth1"></div>
                         </div>
                         <div class="text">
-                            <span>Genetik holati: </span> Sog'lom
+                            <span>Genetik holati: </span> <div id="genetics1"></div>
                         </div>
                     </div>
                     <div class="info-wm">
                         <div class="text">
-                            <span>Familiyasi: </span> <div id="surname_name">Bozorov</div>
+                            <span>Familiyasi: </span> <div id="surname_name2"></div>
                         </div>
                         <div class="text">
-                            <span>Ismi: </span> <div id="given_name"></div>
+                            <span>Ismi: </span> <div id="given_name2"></div>
                         </div>
                         <div class="text">
-                            <span>Otasining ismi: </span> <div id="father_name"></div>
+                            <span>Otasining ismi: </span> <div id="father_name2"></div>
                         </div>
                         <div class="text">
-                            <span>Millati: </span> <div id="nationality"></div>
+                            <span>Millati: </span> <div id="nationality2"></div>
                         </div>
                         <div class="text">
-                            <span>Tug'ilgan sanasi: </span> <div id="date_of_birth"></div>
+                            <span>Tug'ilgan sanasi: </span> <div id="date_of_birth2"></div>
                         </div>
                         <div class="text">
-                            <span>Tug'ilgan joyi: </span> <div id="place_of_birth"></div>
+                            <span>Tug'ilgan joyi: </span> <div id="place_of_birth2"></div>
                         </div>
                         <div class="text">
-                            <span>Genetik holati: </span> <div id="genetics"></div>
+                            <span>Genetik holati: </span> <div id="genetics2"></div>
                         </div>
                     </div>
                 </div>
                 <div class="block-btn d-flex justify-content-end mt-3">
-                    <button type="button" class="btn btn-primary">Start</button>
+                    <button type="submit" class="btn btn-primary">Start</button>
                 </div>
             </div>
             <div class="box-nd mb-5"></div>
-        </div>
+        </form>
     </div>
     <script>
-        const surname_name = document.getElementById('surname_name');
+        {#    ----------1----------    #}
+        const surname_name1 = document.getElementById('surname_name1');
+        const given_name1 = document.getElementById('given_name1');
+        const father_name1 = document.getElementById('father_name1');
+        const nationality1 = document.getElementById('nationality1');
+        const date_of_birth1 = document.getElementById('date_of_birth1');
+        const place_of_birth1 = document.getElementById('place_of_birth1');
+        const genetics1 = document.getElementById('genetics1');
 
-        console.log("rgegr")
+        {#console.log("rgegr")#}
         const input_jshshir1 = document.getElementById('jshshir1');
 
-        input_jshshir1.addEventListener('change', updateValue);
+        input_jshshir1.addEventListener('change', updateValue1);
         console.log(input_jshshir1)
 
-        function updateValue(e) {
-            surname_name.innerHTML = "Axtamov";
+        function updateValue1(e) {
 
             let jshshir1 = e.target.value
             let formData = new FormData();
-            formData.append("jshshir1", jshshir1);
+            formData.append("jshshir", jshshir1);
 
             let url = "{% url 'main:get_person' %}";
 
@@ -108,14 +114,60 @@
                 data: formData,
                 success: function (data) {
                     console.log(data)
+                    surname_name1.innerHTML = "Bozorov";
+                    given_name1.innerHTML = data.surname_name;
+                    father_name1.innerHTML = data.surname_name;
+                    nationality1.innerHTML = data.surname_name;
+                    date_of_birth1.innerHTML = data.surname_name;
+                    place_of_birth1.innerHTML = data.surname_name;
+                    genetics1.innerHTML = data.surname_name;
                     console.log("sgrwdgs")
                 }
             });
+      }
+			{#    ----------2----------    #}
+        const surname_name2 = document.getElementById('surname_name2');
+        const given_name2 = document.getElementById('given_name2');
+        const father_name2 = document.getElementById('father_name2');
+        const nationality2 = document.getElementById('nationality2');
+        const date_of_birth2 = document.getElementById('date_of_birth2');
+        const place_of_birth2 = document.getElementById('place_of_birth2');
+        const genetics2 = document.getElementById('genetics2');
 
+        {#console.log("rgegr")#}
+        const input_jshshir2 = document.getElementById('jshshir2');
+
+        input_jshshir2.addEventListener('change', updateValue2);
+        console.log(input_jshshir2)
+
+        function updateValue2(e) {
+
+            let jshshir2 = e.target.value
+            let formData = new FormData();
+            formData.append("jshshir", jshshir2);
+
+            let url = "{% url 'main:get_person' %}";
+
+            $.ajax({
+                headers: {"X-CSRFToken": "{{csrf_token}}"},
+                url: url,
+                processData: false,
+                contentType: false,
+                method: 'POST',
+                data: formData,
+                success: function (data) {
+                    console.log(data)
+                    surname_name2.innerHTML = "Axtamov";
+                    given_name2.innerHTML = data.surname_name;
+                    father_name2.innerHTML = data.surname_name;
+                    nationality2.innerHTML = data.surname_name;
+                    date_of_birth2.innerHTML = data.surname_name;
+                    place_of_birth2.innerHTML = data.surname_name;
+                    genetics2.innerHTML = data.surname_name;
+                    console.log("sgrwdgs")
+                }
+            });
         }
-
-
-
 
     </script>
 {% endblock %}

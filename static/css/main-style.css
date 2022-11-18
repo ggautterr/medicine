@@ -89,6 +89,7 @@
     margin-bottom: 5px;
 }
 
-.info-wm .text {
+.info-m .text,
+.info-wm .text{
     display: flex;
 }
