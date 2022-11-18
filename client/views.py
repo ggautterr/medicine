@@ -32,7 +32,6 @@ class GetPersonApiView(APIView):
     def post(self, request, *args, **kwargs):
         JSHSHIR = self.request.data.get("jshshir")
         person = PersonSerializers(Person.objects.filter(JSHSHIR=JSHSHIR).first(), many=False)
-        print(person)
         if person:
             return Response(person.data)
         raise ValidationError(detail="Not Found")
@@ -44,7 +43,10 @@ class AnalysisApiView(APIView):
         JSHSHIR1 = self.request.data.get("jshshir1")
         JSHSHIR2 = self.request.data.get("jshshir2")
 
-        person1 = Person.objects.filter(JSHSHIR=JSHSHIR1).first()
-        person2 = Person.objects.filter(JSHSHIR=JSHSHIR2).first()
+        person1 = Person.objects.filter(JSHSHIR="30505001400587").first()
+        person2 = Person.objects.filter(JSHSHIR="60101033998752").first()
+
+        print(person1)
+        print(person2)
 
         return JsonResponse({}, status=200)
