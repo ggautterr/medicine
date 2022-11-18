@@ -17,60 +17,76 @@
                 <div class="block-nd d-flex justify-content-between">
                     <div class="search-m me-3">
                         <div class="mb-3">
-                            <input id="jshshir1" type="text" class="form-control" maxlength="14" placeholder="JSHSHR" required>
+                            <input id="jshshir1" type="text" class="form-control" maxlength="14" placeholder="JSHSHR"
+                                   required>
                         </div>
                     </div>
                     <div class="search-wm">
                         <div class="mb-3">
-                            <input id="jshshir2" type="text" class="form-control" maxlength="14" placeholder="JSHSHR" required>
+                            <input id="jshshir2" type="text" class="form-control" maxlength="14" placeholder="JSHSHR"
+                                   required>
                         </div>
                     </div>
                 </div>
                 <div class="info">
                     <div class="info-m">
                         <div class="text">
-                            <span>Familiyasi: </span> <div id="surname_name1"></div>
+                            <span>Familiyasi: </span>
+                            <div id="surname_name1"></div>
                         </div>
                         <div class="text">
-                            <span>Ismi: </span> <div id="given_name1"></div>
+                            <span>Ismi: </span>
+                            <div id="given_name1"></div>
                         </div>
                         <div class="text">
-                            <span>Otasining ismi: </span> <div id="father_name1"></div>
+                            <span>Otasining ismi: </span>
+                            <div id="father_name1"></div>
                         </div>
                         <div class="text">
-                            <span>Millati: </span> <div id="nationality1"></div>
+                            <span>Millati: </span>
+                            <div id="nationality1"></div>
                         </div>
                         <div class="text">
-                            <span>Tug'ilgan sanasi: </span> <div id="date_of_birth1"></div>
+                            <span>Tug'ilgan sanasi: </span>
+                            <div id="date_of_birth1"></div>
                         </div>
                         <div class="text">
-                            <span>Tug'ilgan joyi: </span> <div id="place_of_birth1"></div>
+                            <span>Tug'ilgan joyi: </span>
+                            <div id="place_of_birth1"></div>
                         </div>
                         <div class="text">
-                            <span>Genetik holati: </span> <div id="genetics1"></div>
+                            <span>Genetik holati: </span>
+                            <div id="genetics1"></div>
                         </div>
                     </div>
                     <div class="info-wm">
                         <div class="text">
-                            <span>Familiyasi: </span> <div id="surname_name2"></div>
+                            <span>Familiyasi: </span>
+                            <div id="surname_name2"></div>
                         </div>
                         <div class="text">
-                            <span>Ismi: </span> <div id="given_name2"></div>
+                            <span>Ismi: </span>
+                            <div id="given_name2"></div>
                         </div>
                         <div class="text">
-                            <span>Otasining ismi: </span> <div id="father_name2"></div>
+                            <span>Otasining ismi: </span>
+                            <div id="father_name2"></div>
                         </div>
                         <div class="text">
-                            <span>Millati: </span> <div id="nationality2"></div>
+                            <span>Millati: </span>
+                            <div id="nationality2"></div>
                         </div>
                         <div class="text">
-                            <span>Tug'ilgan sanasi: </span> <div id="date_of_birth2"></div>
+                            <span>Tug'ilgan sanasi: </span>
+                            <div id="date_of_birth2"></div>
                         </div>
                         <div class="text">
-                            <span>Tug'ilgan joyi: </span> <div id="place_of_birth2"></div>
+                            <span>Tug'ilgan joyi: </span>
+                            <div id="place_of_birth2"></div>
                         </div>
                         <div class="text">
-                            <span>Genetik holati: </span> <div id="genetics2"></div>
+                            <span>Genetik holati: </span>
+                            <div id="genetics2"></div>
                         </div>
                     </div>
                 </div>
@@ -122,17 +138,16 @@
                     date_of_birth1.innerHTML = data.date_of_birth;
                     place_of_birth1.innerHTML = data.place_of_birth;
                     genetics1.innerHTML = data.genetics;
-                    if(data.gender == 1){
+                    if (data.gender == 1) {
                         pic1.src = '../../static/images/male-gender.png'
-                    }
-                    else if (data.gender == 2){
+                    } else if (data.gender == 2) {
                         pic1.src = '../../static/images/femenine.png'
                     }
-                    console.log("sgrwdgs")
                 }
             });
-      }
-			{#    ----------2----------    #}
+        }
+
+        {#    ----------2----------    #}
         const surname_name2 = document.getElementById('surname_name2');
         const given_name2 = document.getElementById('given_name2');
         const father_name2 = document.getElementById('father_name2');
@@ -172,10 +187,9 @@
                     date_of_birth2.innerHTML = data.date_of_birth;
                     place_of_birth2.innerHTML = data.place_of_birth;
                     genetics1.innerHTML = data.genetics;
-                    if(data.gender == 1){
+                    if (data.gender == 1) {
                         pic2.src = '../../static/images/male-gender.png'
-                    }
-                    else if (data.gender == 2){
+                    } else if (data.gender == 2) {
                         pic2.src = '../../static/images/femenine.png'
                     }
                     console.log("sgrwdgs")
