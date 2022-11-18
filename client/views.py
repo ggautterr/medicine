@@ -29,6 +29,7 @@ class GetPersonApiView(APIView):
     serializer_class = PersonSerializers
 
     def post(self, request, *args, **kwargs):
-        JSHSHIR = self.request.data.get("JSHSHIR")
+        JSHSHIR = self.request.data.get("jshshir1")
         object = PersonSerializers(Person.objects.filter(JSHSHIR=JSHSHIR).first(), many=False)
-        return Response({"articles": object.data})
+        print(object)
+        return Response({"person": object.data})
