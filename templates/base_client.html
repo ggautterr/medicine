@@ -7,7 +7,7 @@
     <title>{% block title %}{% endblock title %}</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width">
-{#    <link rel="icon" href="{% static '/images/logos/logo.ico' %}"/>#}
+    <link rel="icon" href="{% static '/images/icon.png' %}"/>
     <link href="{% static '/css/bootstrap.css' %}" rel="stylesheet">
     <link href="{% static '/css/main-style.css' %}" rel="stylesheet">
 {#    <link href="{% static '/css/plugins/plugins.bundle.css' %}" rel="stylesheet" type="text/css"/>#}
@@ -23,6 +23,7 @@
 {#    <link href="{% static '/css/style.bundle.css' %}?v={{ TEMPLATE_STATIC_VERSION }}" rel="stylesheet" type="text/css"/>#}
 
     <script src="{% static '/js/bootstrap.bundle.js' %}"></script>
+{#    <script src="{% static '/js/script.js' %}"></script>#}
 {#    <script src="{% static '/js/plugins/jquery.js' %}"></script>#}
 {#    <script src="{% static '/js/plugins/plugins.bundle.js' %}"></script>#}
 {#    <script src="{% static '/js/plugins/scripts.bundle.js' %}"></script>#}
@@ -48,14 +49,19 @@
 
     <nav class="navbar navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand">Alpha</a>
+            <a class="navbar-brand d-flex justify-content-center align-items-center">
+                <div class="icon">
+                    <img src="../static/images/icon.png" width="80">
+                </div>
+{#                <div class="logo-text ms-2">Alpha</div>#}
+            </a>
             <form class="d-flex">
                 <select class="form-select me-3" aria-label="Default select example">
                   <option value="1">ru</option>
                   <option value="2">uz</option>
                   <option value="3">eng</option>
                 </select>
-                <button class="btn btn-outline-success" type="submit">Go</button>
+                <button class="btn btn-outline-primary" type="submit">Go</button>
             </form>
 {#            <form action="{% url 'set_language' %}" method="post">#}
 {#                {% csrf_token %}#}
@@ -171,6 +177,21 @@
 {##}
 {#{% block script %}#}
 {#{% endblock %}#}
+<script src="../static/js/script.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
+<div id="app">{{ message }}</div>
+
+<script>
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        message: 'Hello Vue!'
+      }
+    }
+  }).mount('#app')
+</script>
 </body>
 </html>
