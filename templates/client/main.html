@@ -97,10 +97,11 @@
                     <button type="submit" class="btn btn-primary">Start</button>
                 </div>
             </div>
-            <div class="box-nd mb-5">
+            <div class="box-nd mb-5" id="id_box_nd">
                 <div id="container"></div>
             </div>
         </form>
+        <div id="result"></div>
     </div>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -144,6 +145,7 @@
         const asdf = document.getElementById('asdf');
         let gender1, gender2;
         let jshshr1, jshshr2;
+        const id_box_nd = document.getElementById('id_box_nd');
         {#    ----------1----------    #}
         const surname_name1 = document.getElementById('surname_name1');
         const given_name1 = document.getElementById('given_name1');
@@ -305,6 +307,8 @@
 
         $('#asdf').submit(function (e) {
             e.preventDefault()
+
+            id_box_nd.style.display = 'block'
 
             let formData = new FormData();
             formData.append("jshshir1", jshshr1);
