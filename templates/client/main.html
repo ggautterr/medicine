@@ -8,10 +8,10 @@
             <div class="box my-5 p-4">
                 <div class="block-st mb-3 d-flex justify-content-around">
                     <div class="img-m">
-                        <img src="../../static/images/male-gender.png" width="30">
+                        <img id="pic1" src="../../static/images/male-gender.png" width="30">
                     </div>
                     <div class="img-wm">
-                        <img src="../../static/images/femenine.png" width="30">
+                        <img id="pic2" src="../../static/images/femenine.png" width="30">
                     </div>
                 </div>
                 <div class="block-nd d-flex justify-content-between">
@@ -90,6 +90,7 @@
         const date_of_birth1 = document.getElementById('date_of_birth1');
         const place_of_birth1 = document.getElementById('place_of_birth1');
         const genetics1 = document.getElementById('genetics1');
+        const pic1 = document.getElementById('pic1');
 
         {#console.log("rgegr")#}
         const input_jshshir1 = document.getElementById('jshshir1');
@@ -114,13 +115,19 @@
                 data: formData,
                 success: function (data) {
                     console.log(data)
-                    surname_name1.innerHTML = "Bozorov";
-                    given_name1.innerHTML = data.surname_name;
-                    father_name1.innerHTML = data.surname_name;
-                    nationality1.innerHTML = data.surname_name;
-                    date_of_birth1.innerHTML = data.surname_name;
-                    place_of_birth1.innerHTML = data.surname_name;
-                    genetics1.innerHTML = data.surname_name;
+                    surname_name1.innerHTML = data.surname_name;
+                    given_name1.innerHTML = data.given_name;
+                    father_name1.innerHTML = data.father_name;
+                    nationality1.innerHTML = data.nationality;
+                    date_of_birth1.innerHTML = data.date_of_birth;
+                    place_of_birth1.innerHTML = data.place_of_birth;
+                    genetics1.innerHTML = data.genetics;
+                    if(data.gender == 1){
+                        pic1.src = '../../static/images/male-gender.png'
+                    }
+                    else if (data.gender == 2){
+                        pic1.src = '../../static/images/femenine.png'
+                    }
                     console.log("sgrwdgs")
                 }
             });
@@ -133,6 +140,7 @@
         const date_of_birth2 = document.getElementById('date_of_birth2');
         const place_of_birth2 = document.getElementById('place_of_birth2');
         const genetics2 = document.getElementById('genetics2');
+        const pic2 = document.getElementById('pic2');
 
         {#console.log("rgegr")#}
         const input_jshshir2 = document.getElementById('jshshir2');
@@ -157,13 +165,19 @@
                 data: formData,
                 success: function (data) {
                     console.log(data)
-                    surname_name2.innerHTML = "Axtamov";
-                    given_name2.innerHTML = data.surname_name;
-                    father_name2.innerHTML = data.surname_name;
-                    nationality2.innerHTML = data.surname_name;
-                    date_of_birth2.innerHTML = data.surname_name;
-                    place_of_birth2.innerHTML = data.surname_name;
-                    genetics2.innerHTML = data.surname_name;
+                    surname_name2.innerHTML = data.surname_name;
+                    given_name2.innerHTML = data.given_name;
+                    father_name2.innerHTML = data.father_name;
+                    nationality2.innerHTML = data.nationality;
+                    date_of_birth2.innerHTML = data.date_of_birth;
+                    place_of_birth2.innerHTML = data.place_of_birth;
+                    genetics1.innerHTML = data.genetics;
+                    if(data.gender == 1){
+                        pic2.src = '../../static/images/male-gender.png'
+                    }
+                    else if (data.gender == 2){
+                        pic2.src = '../../static/images/femenine.png'
+                    }
                     console.log("sgrwdgs")
                 }
             });
