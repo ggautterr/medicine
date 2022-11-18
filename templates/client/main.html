@@ -2,66 +2,83 @@
 {% load i18n %}
 
 {% block main %}
-        <div class="bg"></div>
-        <div class="main">
-            <div class="medicine-form container px-5">
-                <div class="box my-5 p-4">
-                    <div class="block-st mb-3 d-flex justify-content-around">
-                        <div class="img-m">
-                            <img src="../../static/images/male-gender.png" width="30">
-                        </div>
-                        <div class="img-wm">
-                            <img src="../../static/images/femenine.png" width="30">
-                        </div>
+    <div class="bg"></div>
+    <div class="main">
+        <div class="medicine-form container px-5">
+            <div class="box my-5 p-4">
+                <div class="block-st mb-3 d-flex justify-content-around">
+                    <div class="img-m">
+                        <img src="../../static/images/male-gender.png" width="30">
                     </div>
-                    <div class="block-nd d-flex justify-content-between">
-                        <div class="search-m me-3">
-                            <div class="mb-3">
-                              <input id="jshshir1" type="text" class="form-control" maxlength="14" placeholder="JSHSHR">
-                            </div>
-                        </div>
-                        <div class="search-wm">
-                            <div class="mb-3">
-                              <input id="jshshir2" type="text" class="form-control" maxlength="14" placeholder="JSHSHR">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="info">
-                        <div class="info-m">
-                            <span>Familiyasi: </span>
-                            <span>Ismi: </span>
-                            <span>Otasining ismi: </span>
-                            <span>Millati: </span>
-                            <span>Tug'ilgan sanasi: </span>
-                            <span>Tug'ilgan joyi: </span>
-                            <span>Genetik holati: </span>
-                        </div>
-                        <div class="info-wm">
-                            <span>Familiyasi: </span>
-                            <span>Ismi: </span>
-                            <span>Otasining ismi: </span>
-                            <span>Millati: </span>
-                            <span>Tug'ilgan sanasi: </span>
-                            <span>Tug'ilgan joyi: </span>
-                            <span>Genetik holati: </span>
-                        </div>
-                    </div>
-                    <div class="block-btn d-flex justify-content-end mt-3">
-                        <button type="button" class="btn btn-primary">Start</button>
+                    <div class="img-wm">
+                        <img src="../../static/images/femenine.png" width="30">
                     </div>
                 </div>
-                <div class="box-nd mb-5"></div>
+                <div class="block-nd d-flex justify-content-between">
+                    <div class="search-m me-3">
+                        <div class="mb-3">
+                            <input id="jshshir1" type="text" class="form-control" maxlength="14" placeholder="JSHSHR">
+                        </div>
+                    </div>
+                    <div class="search-wm">
+                        <div class="mb-3">
+                            <input id="jshshir2" type="text" class="form-control" maxlength="14" placeholder="JSHSHR">
+                        </div>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="info-m">
+                        <span>Familiyasi: </span>
+                        <span>Ismi: </span>
+                        <span>Otasining ismi: </span>
+                        <span>Millati: </span>
+                        <span>Tug'ilgan sanasi: </span>
+                        <span>Tug'ilgan joyi: </span>
+                        <span>Genetik holati: </span>
+                    </div>
+                    <div class="info-wm">
+                        <span>Familiyasi: </span>
+                        <span>Ismi: </span>
+                        <span>Otasining ismi: </span>
+                        <span>Millati: </span>
+                        <span>Tug'ilgan sanasi: </span>
+                        <span>Tug'ilgan joyi: </span>
+                        <span>Genetik holati: </span>
+                    </div>
+                </div>
+                <div class="block-btn d-flex justify-content-end mt-3">
+                    <button type="button" class="btn btn-primary">Start</button>
+                </div>
             </div>
+            <div class="box-nd mb-5"></div>
         </div>
+    </div>
+    <script>
+        console.log("rgegr")
+        const input_jshshir1 = document.getElementById('jshshir1');
 
-{#        <tr>#}
-{#            <img src="{{ book.image.url }}" alt="Girl in a jacket" width="100%" height="100%">#}
-{#        </tr>#}
-{#        <div class="top-item__info">#}
-{#            <span><strong>{% trans 'category' %}:</strong> </span> {{ book.category }}<br>#}
-{#            <span><strong>{% trans 'name' %}:</strong></span>  {{ book.name }}<br>#}
-{#            <span><strong>{% trans 'description' %}:</strong></span> {{ book.description }}<br>#}
-{#            <span><strong>{% trans 'author' %}:</strong></span> {{ book.author }}<br>#}
-{#            <span><strong>{% trans 'year' %}:</strong></span> {{ book.since }}<br>#}
-{#        </div>#}
+        input_jshshir1.addEventListener('change', updateValue);
+        console.log(input_jshshir1)
+
+        function updateValue(e) {
+            let jshshir1 = e.target.value
+            let formData = new FormData();
+            formData.append("jshshir1", jshshir1);
+
+            let url = "{% url 'main:get_person' %}";
+
+            $.ajax({
+                headers: {"X-CSRFToken": "{{csrf_token}}"},
+                url: url,
+                processData: false,
+                contentType: false,
+                method: 'POST',
+                data: formData,
+                success: function (data) {
+                    console.log("sgrwdgs")
+                }
+            });
+
+        }
+    </script>
 {% endblock %}

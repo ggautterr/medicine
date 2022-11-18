@@ -34,7 +34,7 @@ if os.getenv('DEBUG') == "False":
 
 ALLOWED_HOSTS = ['*']
 REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'api.custom_exeption.custom_exception_handler'
+    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler'
 }
 
 # Application definition

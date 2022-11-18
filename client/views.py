@@ -1,14 +1,34 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-
-# Create your views here.
 from django.views.generic import TemplateView
-from .models import Book
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializers import PersonSerializers
+from .models import Person
+from django.http import JsonResponse
+
+"""API"""
 
 
-class ClientView(TemplateView):
+class PersonGetApiView(generics.ListAPIView):
+    serializer_class = PersonSerializers
+    queryset = Person.objects.all()
+    # lookup_url_kwarg = 'JSHSHIR'
+    pass
+
+
+class PersonView(TemplateView):
     template_name = 'client/main.html'
 
     def get_context_data(self, **kwargs):
-        resp = super(ClientView, self).get_context_data(**kwargs)
-        resp['books'] = Book.objects.all()
+        resp = super(PersonView, self).get_context_data(**kwargs)
         return resp
+
+
+class GetPersonApiView(APIView):
+    serializer_class = PersonSerializers
+
+    def post(self, request, *args, **kwargs):
+        JSHSHIR = self.request.data.get("JSHSHIR")
+        object = PersonSerializers(Person.objects.filter(JSHSHIR=JSHSHIR).first(), many=False)
+        return Response({"articles": object.data})
