@@ -32,8 +32,9 @@ class GetPersonApiView(APIView):
     def post(self, request, *args, **kwargs):
         JSHSHIR = self.request.data.get("jshshir")
         person = PersonSerializers(Person.objects.filter(JSHSHIR=JSHSHIR).first(), many=False)
-        if person:
+        if person.data.get('id'):
             return Response(person.data)
+
         raise ValidationError(detail="Not Found")
 
 
