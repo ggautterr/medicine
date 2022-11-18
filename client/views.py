@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView
 from rest_framework import generics
+from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -29,6 +30,21 @@ class GetPersonApiView(APIView):
     serializer_class = PersonSerializers
 
     def post(self, request, *args, **kwargs):
-        JSHSHIR = self.request.data.get("jshshir1")
-        object = PersonSerializers(Person.objects.filter(JSHSHIR=JSHSHIR).first(), many=False)
-        return Response(object.data)
+        JSHSHIR = self.request.data.get("jshshir")
+        person = PersonSerializers(Person.objects.filter(JSHSHIR=JSHSHIR).first(), many=False)
+        print(person)
+        if person:
+            return Response(person.data)
+        raise ValidationError(detail="Not Found")
+
+
+class AnalysisApiView(APIView):
+
+    def post(self, request, *args, **kwargs):
+        JSHSHIR1 = self.request.data.get("jshshir1")
+        JSHSHIR2 = self.request.data.get("jshshir2")
+
+        person1 = Person.objects.filter(JSHSHIR=JSHSHIR1).first()
+        person2 = Person.objects.filter(JSHSHIR=JSHSHIR2).first()
+
+        return JsonResponse({}, status=200)
