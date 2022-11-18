@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="info">
-                    <div class="info-m">
+                    <div class="info-m" id="info_m">
                         <div class="text">
                             <span>Familiyasi: </span>
                             <div id="surname_name1"></div>
@@ -59,7 +59,7 @@
                             <div id="genetics1"></div>
                         </div>
                     </div>
-                    <div class="info-wm">
+                    <div class="info-wm" id="info_wm">
                         <div class="text">
                             <span>Familiyasi: </span>
                             <div id="surname_name2"></div>
@@ -98,6 +98,9 @@
         </form>
     </div>
     <script>
+        const info_m = document.getElementById('info_m');
+        const info_wm = document.getElementById('info_wm');
+        let gender1, gender2;
         {#    ----------1----------    #}
         const surname_name1 = document.getElementById('surname_name1');
         const given_name1 = document.getElementById('given_name1');
@@ -139,12 +142,32 @@
                     place_of_birth1.innerHTML = data.place_of_birth;
                     genetics1.innerHTML = data.genetics;
                     if (data.gender == 1) {
+                        gender1 = data.gender;
                         pic1.src = '../../static/images/male-gender.png'
                     } else if (data.gender == 2) {
+                        gender1 = data.gender;
                         pic1.src = '../../static/images/femenine.png'
+                    }
+                    input_jshshir1.classList.remove('err')
+                    input_jshshir1.classList.add('succ')
+                    info_m.classList.remove('err')
+                    info_m.classList.add('succ')
+                    test();
+
+                },
+                error: function (data) {
+                    console.log(data.status)
+                    if (data.status == 400) {
+                        input_jshshir1.classList.remove('succ')
+                        input_jshshir1.classList.add('err')
+                        info_m.classList.remove('succ')
+                        info_m.classList.add('err')
                     }
                 }
             });
+
+            {#test();#}
+
         }
 
         {#    ----------2----------    #}
@@ -179,6 +202,7 @@
                 method: 'POST',
                 data: formData,
                 success: function (data) {
+
                     console.log(data)
                     surname_name2.innerHTML = data.surname_name;
                     given_name2.innerHTML = data.given_name;
@@ -188,14 +212,55 @@
                     place_of_birth2.innerHTML = data.place_of_birth;
                     genetics1.innerHTML = data.genetics;
                     if (data.gender == 1) {
+                        gender2 = data.gender;
                         pic2.src = '../../static/images/male-gender.png'
                     } else if (data.gender == 2) {
+                        gender2 = data.gender;
                         pic2.src = '../../static/images/femenine.png'
                     }
-                    console.log("sgrwdgs")
+                    input_jshshir2.classList.remove('err')
+                    input_jshshir2.classList.add('succ')
+                    info_wm.classList.remove('err')
+                    info_wm.classList.add('succ')
+                    test();
+
+                },
+                error: function (data) {
+                    console.log(data.status)
+                    if (data.status == 400) {
+                        input_jshshir2.classList.remove('succ')
+                        input_jshshir2.classList.add('err')
+                        info_wm.classList.remove('succ')
+                        info_wm.classList.add('err')
+                    }
                 }
             });
+
+
+
+
         }
+
+        function test() {
+            console.log(gender1);
+            console.log(gender2);
+
+            if(gender1 === gender2) {
+                console.log(gender1);
+                console.log(gender2);
+
+                input_jshshir1.classList.remove('succ')
+                input_jshshir1.classList.add('err')
+                info_m.classList.remove('succ')
+                info_m.classList.add('err')
+
+                input_jshshir2.classList.remove('succ')
+                input_jshshir2.classList.add('err')
+                info_wm.classList.remove('succ')
+                info_wm.classList.add('err')
+            }
+        }
+
 
     </script>
 {% endblock %}
